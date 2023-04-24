@@ -2,12 +2,12 @@
 function showMap(position) {
     /*位置情報を表示する*/
     var coords = position.coords;
-    alert('緯度: ' + coords.latitude + ', 経度: ' + coords.longitude);
+    document.getElementById("resdiv").innerText = ('緯度: ' + coords.latitude + ', 経度: ' + coords.longitude);
 }
 
 function handleError(error) {
     /*取得失敗のアラートを表示する*/
-    alert('位置情報を取得できません。');
+    document.getElementById("resdiv").innerText = '位置情報を取得できません。';
 }
 
 function getGeoLocation(){
@@ -22,3 +22,4 @@ function getGeoLocation(){
 }
 getGeoLocation();
 </script>
+<div id="resdiv">#NoData</div>
