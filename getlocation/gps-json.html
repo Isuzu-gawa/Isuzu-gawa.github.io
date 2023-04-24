@@ -1,25 +1,28 @@
 <script type="text/javascript">
-function showMap(position) {
-    /*位置情報を表示する*/
-    var coords = position.coords;
-    document.getElementById("resdiv").innerText = ('緯度: ' + coords.latitude + ', 経度: ' + coords.longitude);
-}
+    const resdiv = document.getElementById("resdiv")
 
-function handleError(error) {
-    /*取得失敗のアラートを表示する*/
-    document.getElementById("resdiv").innerText = '位置情報を取得できません。';
-}
+    function showMap(position) {
+        /*位置情報を表示する*/
+        var coords = position.coords;
+        // resdiv.innerText = ('緯度: ' + coords.latitude + ', 経度: ' + coords.longitude);
+        resdiv.innerText = JSON.stringify(coords);
+    }
 
-function getGeoLocation(){
-    if (navigator.geolocation && typeof navigator.geolocation.getCurrentPosition == 'function') {
-        /*位置情報を取得可能な場合*/
-        navigator.geolocation.getCurrentPosition(showMap,handleError);
+    function handleError(error) {
+        /*取得失敗のアラートを表示する*/
+        resdiv.innerText = '位置情報を取得できません。';
     }
-    else {
-        /*位置情報を取得不可能な場合*/
-        handleError();
+
+    function getGeoLocation(){
+        if (navigator.geolocation && typeof navigator.geolocation.getCurrentPosition == 'function') {
+            /*位置情報を取得可能な場合*/
+            navigator.geolocation.getCurrentPosition(showMap,handleError);
+        }
+        else {
+            /*位置情報を取得不可能な場合*/
+            handleError();
+        }
     }
-}
-getGeoLocation();
+    getGeoLocation();
 </script>
 <div id="resdiv">#NoData</div>
