@@ -1,16 +1,19 @@
 <script type="text/javascript">
-    var resdiv = document.getElementById("resdiv");
+    var resdiv = document.getElementById("resdiv"); // この書き方できないの?
 
     function showMap(position) {
         /*位置情報を表示する*/
-        var coords = position.coords;
+        const coords = position.coords;
         // resdiv.innerText = ('緯度: ' + coords.latitude + ', 経度: ' + coords.longitude);
-        resdiv.innerText = JSON.stringify(coords);
+        const coords_json = JSON.stringify(cloneAsObject(coords)); 
+
+        document.getElementById("resdiv").innerText = coords_json;
+        console.log(coords);
     }
 
     function handleError(error) {
         /*取得失敗のアラートを表示する*/
-        resdiv.innerText = '位置情報を取得できません。';
+        document.getElementById("resdiv").innerText = '位置情報を取得できません。';
     }
 
     function getGeoLocation(){
@@ -22,6 +25,18 @@
             /*位置情報を取得不可能な場合*/
             handleError();
         }
+    }
+
+    function cloneAsObject(obj) {
+        if (obj === null || !(obj instanceof Object)) {
+            return obj;
+        }
+        var temp = (obj instanceof Array) ? [] : {};
+        // ReSharper disable once MissingHasOwnPropertyInForeach
+        for (var key in obj) {
+            temp[key] = cloneAsObject(obj[key]);
+        }
+        return temp;
     }
 
     getGeoLocation();
