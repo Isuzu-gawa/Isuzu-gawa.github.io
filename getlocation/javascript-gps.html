@@ -1,0 +1,28 @@
+<script type="text/javascript">
+<!--
+function showMap(position) {
+    /*位置情報を表示する*/
+    var coords = position.coords;
+    alert('緯度: ' + coords.latitude + ', 経度: ' + coords.longitude);
+}
+
+function handleError(error) {
+    /*取得失敗のアラートを表示する*/
+    alert('位置情報を取得できません。');
+}
+
+function getGeoLocation(){
+    if (navigator.geolocation && typeof navigator.geolocation.getCurrentPosition == 'function') {
+        /*位置情報を取得可能な場合*/
+        navigator.geolocation.getCurrentPosition(showMap,handleError);
+    }
+    else {
+        /*位置情報を取得不可能な場合*/
+        handleError();
+    }
+}
+//-->
+</script>
+<script type="text/javascript"></script>
+<a href="javascript:void(0);" onclick="getGeoLocation();">現在置を確認する</a>
+<a href="https://blog.fonland.net/2010/06/javascript-iphone-gps.html">プログラム引用元のサイト</a>
