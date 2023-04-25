@@ -1,48 +1,58 @@
-<div id="resdiv">#NoData</div>
-<script type="text/javascript">
-    var resdiv = document.getElementById("resdiv"); // この書き方できないの? -> 書く順番が悪かった?
+<!DOCTYPE html>
 
-    function showMap(position) {
-        /*位置情報を表示する*/
-        const coords = position.coords;
-        // resdiv.innerText = ('緯度: ' + coords.latitude + ', 経度: ' + coords.longitude);
-        const coords_json = JSON.stringify(cloneAsObject(coords)); 
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <title>GetGeoLocation</title>
+    </head>
+    <body>
+        <div id="resdiv">#NoData</div>
+        <script type="text/javascript">
+            const resdiv = document.getElementById("resdiv"); // この書き方できないの? -> 書く順番が悪かった?
 
-        document.getElementById("resdiv").innerText = coords_json;
-        console.log(coords);
-    }
+            function showMap(position) {
+                /*位置情報を表示する*/
+                const coords = position.coords;
+                // resdiv.innerText = ('緯度: ' + coords.latitude + ', 経度: ' + coords.longitude);
+                const coords_json = JSON.stringify(cloneAsObject(coords)); 
 
-    function handleError(error) {
-        /*取得失敗のアラートを表示する*/
-        document.getElementById("resdiv").innerText = '位置情報を取得できません。';
-    }
+                resdiv.innerText = coords_json;
+                console.log(coords);
+            }
 
-    function handleError2(error) {
-        /*取得失敗のアラートを表示する*/
-        document.getElementById("resdiv").innerText = '位置情報APIが存在しません';
-    }
+            function handleError(error) {
+                /*取得失敗のアラートを表示する*/
+                resdiv.innerText = '位置情報を取得できません。';
+            }
 
-    function getGeoLocation(){
-        if (navigator.geolocation && typeof navigator.geolocation.getCurrentPosition == 'function') {
-            /*位置情報を取得可能な場合*/
-            navigator.geolocation.getCurrentPosition(showMap,handleError);
-        }
-        else {
-            /*位置情報を取得不可能な場合*/
-            handleError2();
-        }
-    }
+            function handleError2(error) {
+                /*取得失敗のアラートを表示する*/
+                resdiv.innerText = '位置情報APIが存在しません';
+            }
 
-    function cloneAsObject(obj) {
-        if (obj === null || !(obj instanceof Object)) {
-            return obj;
-        }
-        var temp = (obj instanceof Array) ? [] : {};
-        // ReSharper disable once MissingHasOwnPropertyInForeach
-        for (var key in obj) {
-            temp[key] = cloneAsObject(obj[key]);
-        }
-        return temp;
-    }
-    getGeoLocation();
-</script>
+            function getGeoLocation(){
+                if (navigator.geolocation && typeof navigator.geolocation.getCurrentPosition == 'function') {
+                    /*位置情報を取得可能な場合*/
+                    navigator.geolocation.getCurrentPosition(showMap,handleError);
+                }
+                else {
+                    /*位置情報を取得不可能な場合*/
+                    handleError2();
+                }
+            }
+
+            function cloneAsObject(obj) {
+                if (obj === null || !(obj instanceof Object)) {
+                    return obj;
+                }
+                var temp = (obj instanceof Array) ? [] : {};
+                // ReSharper disable once MissingHasOwnPropertyInForeach
+                for (var key in obj) {
+                    temp[key] = cloneAsObject(obj[key]);
+                }
+                return temp;
+            }
+            getGeoLocation();
+        </script>
+    </body>
+</html>
