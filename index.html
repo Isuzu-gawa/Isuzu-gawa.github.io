@@ -101,6 +101,12 @@
             import data from "./data.json" assert { type: "json" };
             document.getElementById("container").innerText = JSON.stringify(data)
         </script>
+        <div id="container-cors"></div>
+        <script type="module">
+            // data.jsonをjson形式で読み込んで「data」という名前で使いまわす
+            import data2 from "https://raw.githubusercontent.com/Isuzu-gawa/Isuzu-gawa.github.io/main/data.json" assert { type: "json" };
+            document.getElementById("container-cors").innerText = JSON.stringify(data2)
+        </script>
         <p>なんかうまくうごかない</p>
 
     </div>
