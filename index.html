@@ -104,10 +104,11 @@
         <div id="container-cors"></div>
         <script type="module">
             // data.jsonをjson形式で読み込んで「data」という名前で使いまわす
-            import data2 from "https://raw.githubusercontent.com/Isuzu-gawa/Isuzu-gawa.github.io/main/data.json" assert { type: "json" };
+            import data2 from "https://raw.githubusercontent.com/Isuzu-gawa/Isuzu-gawa.github.io/main/data.json" assert { type: "text/plain" };
             document.getElementById("container-cors").innerText = JSON.stringify(data2)
         </script>
         <p>なんかうまくうごかない</p>
+        <p>githubから引っ張ってきたときはコンテンツタイプが&quot;application/json&quot;ではなく&quot;text/plain&quot;になってるのが原因らしい</p>
 
     </div>
     <!-- SCRIPTS -->
