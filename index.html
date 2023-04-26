@@ -83,7 +83,11 @@
     <div>
         <h3>JavaScript</h3>
         <div id="container"></div>
-        
+        <script type="module">
+            // data.jsonをjson形式で読み込んで「data」という名前で使いまわす
+            import data from "./data.json" assert { type: "json" };
+            console.log(data);
+        </script>
     </div>
     <!-- SCRIPTS -->
     <!-- Example: <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
