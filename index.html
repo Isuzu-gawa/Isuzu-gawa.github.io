@@ -41,6 +41,13 @@
                 <li><a href="https://stackoverflow.com/questions/11042212/ff-13-ie-9-json-stringify-geolocation-object">geolocationcoordinates がJSONに変換できない問題の解決策</a></li>        
             </ul>
         </li>
+        <li>JSまわり
+            <ul>
+                <li><a href="https://www.delftstack.com/ja/howto/javascript/javascript-object-to-string/">JSONまわりの文字列変換</a></li>
+                <li><a href="https://lorem-co-ltd.com/json-basic/">JSONデータの読み込み</a></li>
+                <li><a href="https://uxmilk.jp/46993">XHTTPリクエスト??</a></li>
+            </ul>
+        </li>
     </ul>
     <br>
     <h3>変更履歴</h3>
@@ -86,8 +93,9 @@
         <script type="module">
             // data.jsonをjson形式で読み込んで「data」という名前で使いまわす
             import data from "./data.json" assert { type: "json" };
-            document.getElementById("container").innerText = data
+            document.getElementById("container").innerText = JSON.stringify(data)
         </script>
+        <p>なんかうまくうごかない</p>
 
     </div>
     <!-- SCRIPTS -->
