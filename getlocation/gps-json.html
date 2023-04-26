@@ -23,6 +23,7 @@
             function handleError(error) {
                 /*取得失敗のアラートを表示する*/
                 resdiv.innerText = '位置情報を取得できません。';
+                resdiv.innerText = resdiv.innerText + "<br>" + JSON.stringify(error.message)
             }
 
             function handleError2(error) {
