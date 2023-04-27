@@ -102,9 +102,15 @@
             document.getElementById("container").innerText = JSON.stringify(data)
         </script>
         <div id="container-cors">#読み込みできてない</div>
-        <script type="module">
-            // data.jsonをjson形式で読み込んで「data」という名前で使いまわす
-            import data2 from "https://raw.githubusercontent.com/Isuzu-gawa/Isuzu-gawa.github.io/main/data.json";
+        <script>
+            let data2 = {}
+            fetch("https://raw.githubusercontent.com/Isuzu-gawa/Isuzu-gawa.github.io/main/data.json")
+            .then((response) => response.json())
+            .then((data) => {
+                data2 = data
+                console.log(data);
+            });
+
             document.getElementById("container-cors").innerText = JSON.stringify(data2)
         </script>
         <p>なんかうまくうごかない</p>
