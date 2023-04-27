@@ -112,9 +112,9 @@
             .then((data) => {
                 data2 = data;
                 console.log(data2);
+                
+                document.getElementById("container-cors").innerText = JSON.stringify(data2)
             });
-
-            document.getElementById("container-cors").innerText = JSON.stringify(data2)
         </script>
         <p>なんかうまくうごかない</p>
         <p>githubから引っ張ってきたときはコンテンツタイプが&quot;application/json&quot;ではなく&quot;text/plain&quot;になってるのが原因らしい</p>
