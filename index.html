@@ -107,19 +107,16 @@
         <div id="container-google">#google drive 読み込みできてない</div>
         <script>
             // fetch の都合上、中に全部書くかまるっとasyncで囲んでawaitしないとfetch処理が終わる前に次に進んでしまう
-            let data2 = {};
             // fetch("./data.json")
             fetch("https://raw.githubusercontent.com/Isuzu-gawa/Isuzu-gawa.github.io/main/data.json")
             .then((response) => response.json())
             .then((data) => {
-                data2 = data;
-                console.log(data2);
-
-                document.getElementById("container-cors").innerText = JSON.stringify(data2)
+                console.log(data);
+                document.getElementById("container-cors").innerText = JSON.stringify(data)
             });
 
             // fetch("./data.json")
-            fetch("https://drive.google.com/uc?id=1ii_u_OsPmfqmEeg05vK-53j_PkUtxSpS&export=download")
+            fetch("https://drive.google.com/uc?export=view&id=1ii_u_OsPmfqmEeg05vK-53j_PkUtxSpS", redirect='follow')
             .then((response) => response.json())
             .then((data) => {
                 document.getElementById("container-google").innerText = JSON.stringify(data)
