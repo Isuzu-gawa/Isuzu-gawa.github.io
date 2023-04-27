@@ -115,8 +115,7 @@
                 document.getElementById("container-cors").innerText = JSON.stringify(data)
             });
 
-            // fetch("./data.json")
-            fetch("https://drive.google.com/uc?export=view&id=1ii_u_OsPmfqmEeg05vK-53j_PkUtxSpS", redirect='follow')
+            fetch("https://drive.google.com/uc?export=view&id=1ii_u_OsPmfqmEeg05vK-53j_PkUtxSpS", {redirect:"follow"})
             .then((response) => response.json())
             .then((data) => {
                 document.getElementById("container-google").innerText = JSON.stringify(data)
