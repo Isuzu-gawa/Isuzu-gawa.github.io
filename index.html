@@ -105,14 +105,15 @@
         </script>
         <div id="container-cors">#読み込みできてない</div>
         <script>
+            // fetch の都合上、中に全部書くかまるっとasyncで囲んでawaitしないとfetch処理が終わる前に次に進んでしまう
             let data2 = {};
-            fetch("./data.json")
-            // fetch("https://raw.githubusercontent.com/Isuzu-gawa/Isuzu-gawa.github.io/main/data.json")
+            // fetch("./data.json")
+            fetch("https://raw.githubusercontent.com/Isuzu-gawa/Isuzu-gawa.github.io/main/data.json")
             .then((response) => response.json())
             .then((data) => {
                 data2 = data;
                 console.log(data2);
-                
+
                 document.getElementById("container-cors").innerText = JSON.stringify(data2)
             });
         </script>
