@@ -104,7 +104,8 @@
         <div id="container-cors">#読み込みできてない</div>
         <script>
             let data2 = {}
-            fetch("https://raw.githubusercontent.com/Isuzu-gawa/Isuzu-gawa.github.io/main/data.json")
+            fetch("./data.json")
+            // fetch("https://raw.githubusercontent.com/Isuzu-gawa/Isuzu-gawa.github.io/main/data.json")
             .then((response) => response.json())
             .then((data) => {
                 data2 = data
